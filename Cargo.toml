@@ -2,6 +2,13 @@
 name = "did"
 version = "0.1.0"
 authors = ["Carlo Panzi <carlo.panzi@gmail.com>"]
+description = "A tool to keep track of the activities done"
+homepage = "https://github.com/kajyr/did"
+repository = "https://github.com/kajyr/did"
+readme = "README.md"
+categories = ["command-line-utilities"]
+keywords = ["log", "diary"]
+license-file = "LICENSE"
 
 [dependencies]
 clap = "~2.32"
