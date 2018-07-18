@@ -1,0 +1,6 @@
+[package]
+name = "did"
+version = "0.1.0"
+authors = ["Carlo Panzi <carlo.panzi@gmail.com>"]
+
+[dependencies]
