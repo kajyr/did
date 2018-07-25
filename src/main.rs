@@ -9,7 +9,7 @@ use std::io::prelude::*;
 
 fn main() {
     let matches = App::new("did")
-        .version("0.1.0")
+        .version(env!("CARGO_PKG_VERSION"))
         .about("Helps me remember what I did")
         .author("Carlo <carlo.panzi@gmail.com>")
         .arg(
@@ -18,11 +18,26 @@ fn main() {
                 .required(true)
                 .index(1),
         )
+        .arg(
+            Arg::with_name("ticket")
+                .short("t")
+                .long("ticket")
+                .value_name("FILE")
+                .help("Specify a ticket number")
+                .takes_value(true),
+        )
         .get_matches();
 
     let date = Local::now();
     let home_path = env::home_dir().unwrap();
     let did_file = home_path.join("did.txt");
+
+    let ticket = match matches.value_of("ticket") {
+        Some(t) => format!("{} ", t),
+        None => "".to_string(),
+    };
+
+    println!("ticket {}", ticket);
 
     let date_str = date.format("[%Y-%m-%d %H:%M:%S]");
     let did_str = matches.value_of("INPUT").unwrap();
@@ -34,7 +49,7 @@ fn main() {
         .open(did_file)
         .unwrap();
 
-    let line = format!("{} - {}", date_str, did_str);
+    let line = format!("{} - {}{}", date_str, ticket, did_str);
 
     if let Err(e) = writeln!(file, "{}", line) {
         eprintln!("Couldn't write to file: {}", e);
