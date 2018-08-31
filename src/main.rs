@@ -37,8 +37,6 @@ fn main() {
         None => "".to_string(),
     };
 
-    println!("ticket {}", ticket);
-
     let date_str = date.format("[%Y-%m-%d %H:%M:%S]");
     let did_str = matches.value_of("INPUT").unwrap();
 
