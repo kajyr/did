@@ -14,8 +14,9 @@ fn main() {
         .author("Carlo <carlo.panzi@gmail.com>")
         .arg(
             Arg::with_name("INPUT")
-                .help("Sets the input file to use")
+                .help("The descriptive string of what you did")
                 .required(true)
+                .multiple(true)
                 .index(1),
         )
         .arg(
@@ -38,7 +39,8 @@ fn main() {
     };
 
     let date_str = date.format("[%Y-%m-%d %H:%M:%S]");
-    let did_str = matches.value_of("INPUT").unwrap();
+    let dids: Vec<_> = matches.values_of("INPUT").unwrap().collect();
+    let did_str = dids.join(" ");
 
     let mut file = OpenOptions::new()
         .write(true)
