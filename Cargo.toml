@@ -1,6 +1,6 @@
 [package]
 name = "did"
-version = "0.2.1"
+version = "1.0.0"
 authors = ["Carlo Panzi <carlo.panzi@gmail.com>"]
 description = "A tool to keep track of the activities done"
 homepage = "https://github.com/kajyr/did"
