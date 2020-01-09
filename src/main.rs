@@ -29,7 +29,7 @@ fn main() {
         .get_matches();
 
     let date = Local::now();
-    let home_path = env::home_dir().unwrap();
+    let home_path = dirs::home_dir().unwrap();
     let did_file = home_path.join("did.txt");
 
     let ticket = match matches.value_of("ticket") {
